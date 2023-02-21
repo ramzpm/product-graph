@@ -1,0 +1,14 @@
+
+
+type Query {
+    getReviews(id: String!): Reviews
+    getProductDetails( id: String!): ProductDetails
+}
+
+
+type ProductDetails {
+    product: Product!
+    reviews: Reviews
+    price: Price
+    inventory: Inventory
+}

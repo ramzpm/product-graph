@@ -1,19 +1,57 @@
 plugins {
     id 'java'
+    id 'application'
+    id 'org.springframework.boot' version '2.6.2'
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+
+mainClassName = 'com.ramz.graph.product.Application'
 
 repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+ext {
+    springBootVersion = ''
+    lombokVersion = ''
+    jaxbVersion = ''
+    graphqlStarterVersion = ''
+    graphqlJavaExtendedVersion = ''
+
 }
 
-test {
-    useJUnitPlatform()
+
+dependencies {
+    compileOnly "org.projectlombok:lombok:1.18.24"
+    annotationProcessor "org.projectlombok:lombok:1.18.24"
+    implementation group: 'javax.xml.bind', name: 'jaxb-api', version: "2.3.0"
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: "2.6.2"
+    implementation group: 'com.graphql-java-kickstart', name: 'graphql-spring-boot-starter', version: "12.0.0"
+    implementation group: 'com.graphql-java', name: 'graphql-java-extended-validation', version: "16.0.0"
+}
+
+
+sourceSets {
+    main {
+        resources {
+            srcDirs += "$rootDir/resources"
+        }
+    }
+    test {
+        java {
+            runtimeClasspath += main.output + test.output
+        }
+        resources {
+            srcDirs += ["src/main/resources", "$rootDir/resources"]
+        }
+    }
+}
+
+jar {
+    enabled = true
+    manifest {
+        attributes(
+                'Main-Class': 'com.ramz.graph.product.Application'
+        )
+    }
 }

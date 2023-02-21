@@ -1,0 +1,17 @@
+type Reviews {
+    productId: String!
+    indReviews: [IndReview]
+    totalFeedbackCount: Int
+    positiveFeedbackCount: Int
+    negativeFeedbackCount: Int
+}
+
+type IndReview {
+    reviewId: String!
+    isRecommended: Boolean
+    isRatingsOnly: Boolean
+    userNickname: String
+    reviewText: String
+    rating: Int
+}
+

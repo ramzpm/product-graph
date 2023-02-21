@@ -1,0 +1,8 @@
+
+type Price {
+    productId: String!
+    offerPrice: Float
+    salePrice: Float
+    saleText: String
+    offerText: String
+}

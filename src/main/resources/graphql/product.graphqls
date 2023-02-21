@@ -1,0 +1,21 @@
+
+type Product {
+    title: String
+    productId: String!
+    submissionTime: String
+    deliveryMessage: String
+    warrantyInformation: String
+    sizeGuide: String
+    partnumber: String
+    description: String
+    brand: String
+    id: String
+    photos: [Photo]
+}
+
+type Photo {
+    logoImageUrl: String
+    client: String
+    name: String
+    photoId: String
+}

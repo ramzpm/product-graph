@@ -1,0 +1,21 @@
+graphql:
+  playground:
+    mapping: /playground
+    enabled: true
+    pageTitle: Reviews playground
+  voyager:
+    enabled: true
+    basePath: /
+    mapping: /voyager
+    endpoint: /graphql
+  altair:
+    enabled: true
+    mapping: /altair
+    subscriptions:
+      timeout: 30
+      reconnect: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "info"

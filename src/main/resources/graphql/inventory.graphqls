@@ -1,0 +1,7 @@
+
+type Inventory {
+    productId: String!
+    count: Int
+    stockInTransit: Boolean
+    stockInTransitDate: String
+}
