@@ -22,13 +22,11 @@ public class InventoryResolver implements GraphQLResolver<ProductDetails> {
 
     private InventoryService service;
 
-    public Inventory getInventoryResponse(ProductDetails details, DataFetchingEnvironment env) {
+    public Inventory inventory(ProductDetails details, DataFetchingEnvironment env) {
         Map<String, Object> contextValues = env.getExecutionStepInfo().getParent().getArguments();
         String id = contextValues.get("id").toString();
-        System.out.println("Inve id"+id);
-        Inventory inventoryResponse = service.getInventoryDetailsFromService(id);
-        System.out.println(inventoryResponse);
-        return inventoryResponse;
+        log.info("Invoking inventory service for productId..." + id);
+        return service.getInventoryDetailsFromService(id);
     }
 
 }

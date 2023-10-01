@@ -22,10 +22,10 @@ public class PriceResolver implements GraphQLResolver<ProductDetails> {
 
     private PriceService service;
 
-    public Price getPriceResponse(ProductDetails details, DataFetchingEnvironment env) {
+    public Price price(ProductDetails details, DataFetchingEnvironment env) {
         Map<String, Object> contextValues = env.getExecutionStepInfo().getParent().getArguments();
         String id = contextValues.get("id").toString();
-        Price priceFromService = service.getPriceFromService(id);
-        return priceFromService;
+        log.info("Invoking Price service for productId..." + id);
+        return service.getPriceFromService(id);
     }
 }

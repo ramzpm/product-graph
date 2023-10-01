@@ -1,37 +1,31 @@
 package com.ramz.graph.product.Resolver;
 
+import com.ramz.graph.product.model.Product;
 import com.ramz.graph.product.model.ProductDetails;
-import com.ramz.graph.product.model.Reviews;
 import com.ramz.graph.product.service.ProductService;
-import com.ramz.graph.product.service.ReviewsService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import graphql.schema.DataFetchingEnvironment;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.net.URISyntaxException;
 
 
 /**
  * Resolver class for Product Details feature and method name should match with the schema query.
  */
 @Component
-@AllArgsConstructor
 @Slf4j
 public class QueryResolver implements GraphQLQueryResolver {
 
+    @Autowired
     private ProductService productService;
 
-    private ReviewsService reviewsService;
-
-
-    public Reviews getReviews(String id) {
-        Reviews reviewResponse = reviewsService.getReviewsFromService(id);
-        return reviewResponse;
-    }
-
-    public ProductDetails getProductDetails(String id, DataFetchingEnvironment env) {
+    public ProductDetails getProductDetails(String id, DataFetchingEnvironment env) throws URISyntaxException {
         ProductDetails productDetailsFromService = new ProductDetails();
-        productDetailsFromService.setProduct(productService.getProductDetailsFromService(id));
+        Product p = productService.getProductDetailsFromService(id);
+        productDetailsFromService.setProduct(p);
         return productDetailsFromService;
     }
 

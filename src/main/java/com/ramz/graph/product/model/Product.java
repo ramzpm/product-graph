@@ -20,6 +20,6 @@ public class Product {
     String deliveryMessage;
     String submissionTime;
     String id;
-    List<Photo> photos;
+    List<Photo> photo;
 
 }

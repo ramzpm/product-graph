@@ -1,7 +1,6 @@
 
 
 type Query {
-    getReviews(id: String!): Reviews
     getProductDetails( id: String!): ProductDetails
 }
 
@@ -9,6 +8,6 @@ type Query {
 type ProductDetails {
     product: Product!
     reviews: Reviews
-    price: Price
+    price: Price!
     inventory: Inventory
 }
